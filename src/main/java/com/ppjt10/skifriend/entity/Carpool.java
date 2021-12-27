@@ -7,11 +7,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
 @NoArgsConstructor
-public class  Carpool extends Timestamped {
+public class Carpool extends Timestamped {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
@@ -20,12 +22,15 @@ public class  Carpool extends Timestamped {
     @JoinColumn(nullable = false)
     private User user;
 
-    @Column(nullable = false)
-    private String carpoolType;
+    @OneToMany(mappedBy = "carpool", cascade = CascadeType.ALL)
+    private List<ChatRoom> chatRoomList = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(nullable = false)
     private SkiResort skiResort;
+
+    @Column(nullable = false)
+    private String carpoolType;
 
     @Column(nullable = false)
     private String startLocation;
@@ -75,8 +80,8 @@ public class  Carpool extends Timestamped {
         this.memberNum = requestDto.getMemberNum();
         this.notice = requestDto.getNotice();
     }
-    
-    public void changeStatus(){
+
+    public void changeStatus() {
         this.status = false;
     }
 }
