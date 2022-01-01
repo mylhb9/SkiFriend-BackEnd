@@ -18,9 +18,28 @@ script: "./gradlew clean build"
 before_install:
   - chmod +x gradlew
 
+
+
+before_deploy:
+  - zip -r springboot-webservice ./*
+  - mkdir -p deploy
+  - mv springboot-webservice.zip deploy/springboot-webservice.zip
+
+deploy:
+  - provider: s3
+    access_key_id: AKIAQY4IGNVOCQRYYARZ
+
+    secret_access_key: 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
+
+    bucket: beomin-travis-build
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private
+    local_dir: deploy
+    wait-until-deployed: true
+
 # when Ci completes, Alarm to mail
 notifications:
   email:
     recipients:
       - mylhb9@naver.com
-
