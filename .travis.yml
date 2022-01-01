@@ -30,7 +30,8 @@ deploy:
     access_key_id: AKIAQY4IGNVOCQRYYARZ
 
     secret_access_key: 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
-
+    on:
+      branch: main
     bucket: beomin-travis-build
     region: ap-northeast-2
     skip_cleanup: true
