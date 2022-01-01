@@ -22,7 +22,7 @@ public class CarpoolDto {
         private int memberNum;
         private String notice;
     }
-
+//
     //조회용
     @Builder
     @Getter
