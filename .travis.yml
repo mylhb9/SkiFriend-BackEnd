@@ -44,17 +44,17 @@ deploy:
     secret_access_key: a0a4WhoOmmTa0xFRd+Zv7ueCYTczjGOG7jKGZ2DM
     on:
       branch: main
-      bucket: beomin-travis-build
-      key: springboot-webservice.zip
+    bucket: beomin-travis-build
+    key: springboot-webservice.zip
 
-      bundle_type: zip
-      application: springboot-webservice
+    bundle_type: zip
+    application: springboot-webservice
 
-      deployment_group: springboot-webservice-group
+    deployment_group: springboot-webservice-group
 
     region: ap-northeast-2
     wait-until-deployed: true
-    
+
 # when Ci completes, Alarm to mail
 notifications:
   email:
