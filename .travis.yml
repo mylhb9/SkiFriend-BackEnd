@@ -21,7 +21,7 @@ before_install:
 
 
 before_deploy:
-  - zip -r springboot-webservice *
+  - zip -r springboot-webservice ./*
   - mkdir -p deploy
   - mv springboot-webservice.zip deploy/springboot-webservice.zip
 
