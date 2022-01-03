@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-REPOSITORY=/home/ubuntu/app/step2/zip
+REPOSITORY=/home/ubuntu/app/step3/zip
 
 echo "> 현재 구동 중인 애플리케이션 pid 확인"
 
@@ -30,4 +30,7 @@ echo "> $JAR_NAME 실행"
 
 
 
-nohup java -jar $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
+nohup java -jar \
+    -Dspring.config.location=classpath:/application.properties,classpath:/application-real.properties,/home/ubuntu/app/application-oauth.properties,/home/ubuntu/app/application-real-db.properties \
+    -Dspring.profiles.active=real \
+    $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
